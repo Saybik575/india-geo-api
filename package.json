@@ -1,10 +1,4 @@
 {
-  "name": "india-village-explorer-monorepo",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "cd backend && npm install && npx prisma generate && cd ../frontend && npm install",
-    "start": "cd backend && npm start"
-  },
   "dependencies": {
     "@prisma/adapter-pg": "^7.7.0",
     "pg": "^8.20.0",
