@@ -77,20 +77,20 @@ export const getVillages = (subdistrictCode, page = 1, limit = 20, name = "") =>
 		search.set("name", name.trim());
 	}
 
-	return fetchJson(`/api/villages?${search.toString()}`);
+	return fetchJson(`/villages?${search.toString()}`);
 };
 
 export const searchVillages = (query) => {
 	const normalizedQuery = query.trim();
-	return fetchJson(`/api/villages/search?name=${encodeURIComponent(normalizedQuery)}`);
+	return fetchJson(`/villages/search?name=${encodeURIComponent(normalizedQuery)}`);
 };
 
 export const searchDistricts = (query) => {
 	const normalizedQuery = query.trim();
-	return fetchJson(`/api/districts/search?name=${encodeURIComponent(normalizedQuery)}`);
+	return fetchJson(`/districts/search?name=${encodeURIComponent(normalizedQuery)}`);
 };
 
 export const searchSubdistricts = (query) => {
 	const normalizedQuery = query.trim();
-	return fetchJson(`/api/subdistricts/search?name=${encodeURIComponent(normalizedQuery)}`);
+	return fetchJson(`/subdistricts/search?name=${encodeURIComponent(normalizedQuery)}`);
 };
