@@ -21,7 +21,34 @@ const stateDistrictsLimiter = rateLimit({
 	message: "Too many district lookup requests, try later",
 });
 
+/**
+ * @swagger
+ * /states:
+ *   get:
+ *     summary: Get all states
+ *     description: Returns list of all states
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.get("/", statesLimiter, getStates);
+
+/**
+ * @swagger
+ * /states/{stateId}/districts:
+ *   get:
+ *     summary: Get districts by state ID
+ *     description: Returns list of districts for a given state
+ *     parameters:
+ *       - in: path
+ *         name: stateId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.get("/:stateId/districts", stateDistrictsLimiter, getDistrictsByState);
 
 module.exports = router;

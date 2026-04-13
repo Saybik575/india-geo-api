@@ -13,6 +13,32 @@ const villagesLimiter = rateLimit({
   message: "Too many village requests, try later",
 });
 
+/**
+ * @swagger
+ * /subdistricts/{subdistrictId}/villages:
+ *   get:
+ *     summary: Get villages by subdistrict ID
+ *     description: Returns paginated villages for a given subdistrict
+ *     parameters:
+ *       - in: path
+ *         name: subdistrictId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *       - in: query
+ *         name: page
+ *         required: false
+ *         schema:
+ *           type: integer
+ *       - in: query
+ *         name: limit
+ *         required: false
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.get("/:subdistrictId/villages", villagesLimiter, getVillagesBySubdistrict);
 
 module.exports = router;

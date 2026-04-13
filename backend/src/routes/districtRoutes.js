@@ -13,6 +13,22 @@ const districtSubdistrictsLimiter = rateLimit({
 	message: "Too many subdistrict lookup requests, try later",
 });
 
+/**
+ * @swagger
+ * /districts/{districtId}/subdistricts:
+ *   get:
+ *     summary: Get subdistricts by district ID
+ *     description: Returns list of subdistricts for a given district
+ *     parameters:
+ *       - in: path
+ *         name: districtId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.get("/:districtId/subdistricts", districtSubdistrictsLimiter, getSubdistrictsByDistrict);
 
 module.exports = router;
