@@ -397,7 +397,7 @@ function App() {
                   </select>
                   {noSubdistrictsAvailable ? (
                     <p className="mt-2 text-xs text-amber-700">
-                      No subdistrict data is available for this district in the dataset. Please choose another district.
+                      No subdistrict data is available for this district. Please choose another district.
                     </p>
                   ) : null}
                 </label>
