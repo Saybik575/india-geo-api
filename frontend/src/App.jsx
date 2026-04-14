@@ -160,8 +160,8 @@ function App() {
           chartData={stateVillageCounts}
           chartLoading={stateVillageCountsQuery.isLoading}
         />
-        <main className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-          <section className="self-start rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_50px_rgba(15,23,42,0.08)]">
+        <main className="grid gap-6 lg:grid-cols-3">
+          <section className="lg:col-span-1 self-start rounded-3xl border border-slate-200 bg-white p-6 shadow-md hover:shadow-lg transition-all">
             <h2 className="text-2xl font-bold tracking-tight text-slate-950">Search places</h2>
 
             <div className="mt-5 space-y-5">
@@ -304,8 +304,8 @@ function App() {
             </div>
           </section>
 
-          <section className="grid gap-6">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_50px_rgba(15,23,42,0.08)]">
+          <section className="lg:col-span-2 flex flex-col gap-6">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-md hover:shadow-lg transition-all">
               <div className="mb-5">
                 <h2 className="text-2xl font-bold tracking-tight text-slate-950">Location picker</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -396,9 +396,9 @@ function App() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_50px_rgba(15,23,42,0.08)]">
+            <div className="rounded-3xl border border-slate-200 bg-gray-50 p-6 shadow-md hover:shadow-lg transition-all">
               <div className="flex items-center justify-between gap-4">
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950">Villages</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-slate-950">Villages</h2>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
                   Showing {pageStart}-{pageEnd} of {totalVillages} villages
                 </span>
