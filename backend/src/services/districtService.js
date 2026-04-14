@@ -7,12 +7,10 @@ const getDistrictsByStateId = async (stateId, name) => {
   // 1. Check cache
   const cachedData = await redisClient.get(cacheKey);
   if (cachedData) {
-    console.log("Cache HIT - districts");
     return JSON.parse(cachedData);
   }
 
   // 2. Fetch from DB
-  console.log("Cache MISS - districts");
   const where = {
     state_code: stateId,
     ...(name
@@ -67,11 +65,9 @@ const searchDistrictsByName = async (name) => {
   const cachedData = await redisClient.get(cacheKey);
 
   if (cachedData) {
-    console.log("Cache HIT - district search");
     return JSON.parse(cachedData);
   }
 
-  console.log("Cache MISS - district search");
   const districts = await prisma.districts.findMany({
     where: {
       district_name: {

@@ -9,12 +9,10 @@ const getVillagesBySubdistrictId = async (subdistrictId, page, limit, name) => {
   // 1. Check cache
   const cachedData = await redisClient.get(cacheKey);
   if (cachedData) {
-    console.log("Cache HIT - villages");
     return JSON.parse(cachedData);
   }
 
   // 2. Fetch from DB
-  console.log("Cache MISS - villages");
   const where = {
     subdistrict_code: subdistrictId,
     ...(name
@@ -53,11 +51,9 @@ const getVillagesPage = async (subdistrictCode, page = 1, limit = 20) => {
 
   const cachedData = await redisClient.get(cacheKey);
   if (cachedData) {
-    console.log("Cache HIT - paginated villages");
     return JSON.parse(cachedData);
   }
 
-  console.log("Cache MISS - paginated villages");
   const where = {
     subdistrict_code: subdistrictCode,
   };
@@ -100,14 +96,6 @@ const searchVillagesByName = async (name) => {
   }
 
   const cacheKey = `villages:search:${normalizedName.toLowerCase()}`;
-  // Skip cache for now - force fresh query
-  // const cachedData = await redisClient.get(cacheKey);
-  // if (cachedData) {
-  //   console.log("Cache HIT - village search");
-  //   return JSON.parse(cachedData);
-  // }
-
-  console.log("Cache MISS - village search");
   
   // First, get the village IDs that match
   const villageMatches = await prisma.villages.findMany({

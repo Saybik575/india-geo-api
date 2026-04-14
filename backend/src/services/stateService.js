@@ -8,12 +8,10 @@ const getAllStates = async (name) => {
   const cachedData = await redisClient.get(cacheKey);
 
   if (cachedData) {
-    console.log("Cache HIT");
     return JSON.parse(cachedData);
   }
 
   // 2. Fetch from DB
-  console.log("Cache MISS");
   const where = name
     ? {
         state_name: {
@@ -48,11 +46,9 @@ const getStateVillageCounts = async (limit = 10) => {
 
   const cachedData = await redisClient.get(cacheKey);
   if (cachedData) {
-    console.log("Cache HIT - state village counts");
     return JSON.parse(cachedData);
   }
 
-  console.log("Cache MISS - state village counts");
   const rows = await prisma.$queryRaw`
     SELECT
       s.state_code,
